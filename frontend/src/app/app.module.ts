@@ -15,6 +15,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatCardModule} from '@angular/material/card';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { NgxMasonryModule } from 'ngx-masonry';
 
 import { SearchReposPipe } from '../shared/pipes/search-repos.pipe';
 
@@ -37,7 +38,8 @@ import { SearchReposPipe } from '../shared/pipes/search-repos.pipe';
     MatCardModule,
     FlexLayoutModule,
     MatPaginatorModule,
-    FormsModule
+    FormsModule,
+    NgxMasonryModule
   ],
   providers: [],
   bootstrap: [AppComponent]

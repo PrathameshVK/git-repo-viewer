@@ -31,10 +31,49 @@
     }
     .error-image{
         width: 50%;
+        display: flex;
+        justify-content: center;
         img{
             width: 70%;
             height: auto;
             margin: 0 auto;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .error-div{
+        flex-direction: column-reverse;
+        align-items: center;
+        height: 90vh;
+        .error-message{
+            text-align: center;
+            h3{
+                font-size: 2rem;
+            }
+            h6{
+                font-size: 1.2rem;
+                line-height: 1.2rem;
+            }
+            .go-back{
+                margin: 2px;
+                padding: 6px;
+                border: none;
+                cursor: pointer;
+                border-radius: 6px;
+                background-color: rgb(94, 94, 255);
+                font-size: .8rem;
+                color: white;
+                &:hover{
+                    background-color: rgb(52, 52, 250);
+                }
+            }
+        }
+        .error-image{
+            width: 80%;
+            img{
+                margin: 0 auto;
+            }
         }
     }
 }

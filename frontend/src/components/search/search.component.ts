@@ -8,7 +8,7 @@ import { AppService } from '../../app/app.service';
 })
 export class SearchComponent implements OnInit {
 
-  searchString: String = "";
+  searchString: string = "";
   loading:boolean=false;
 
   constructor(private appService: AppService) {}
@@ -16,7 +16,7 @@ export class SearchComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  fetchUserInfo(searchString: String){
+  fetchUserInfo(searchString: string){
     this.loading=true;
     this.appService.fetchUserInfo(searchString);
   }

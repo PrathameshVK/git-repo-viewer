@@ -23,7 +23,7 @@ export class AppService {
 
   constructor(private http: HttpClient) { }
 
-  fetchUserInfo(searchString: String){
+  fetchUserInfo(searchString: string){
       this.http.get<any>(`http://localhost:3000/api/search?user=${searchString}`).subscribe({
         next: data => {
           this.userInfo = data.data;

@@ -5,7 +5,14 @@
     justify-content: center;
     align-items: center;
 }
+.user-page{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
 .user-card{
+    height: max-content;
+    padding: 2%;
     box-shadow: none;
     .user-basics{
         width: 100vw;
@@ -27,14 +34,19 @@
             width: 70%;
             mat-card-title{
                 font-size: 2.5rem;
+                line-height: 2.5rem;
                 font-weight: 600;
             }
             mat-card-subtitle{
                 display: flex;
-                align-items: center;
-                gap: 5px;
+                flex-direction: column;
+                gap: 2px;
                 font-size: 1rem;
                 color: rgb(92, 92, 92);
+                div{
+                    display: flex;
+                    align-items: center;
+                }
                 a{
                     text-decoration: none;
                     color: rgb(92, 92, 92);
@@ -46,7 +58,7 @@
 .search-form{
     width: 90%;
     margin: 0 auto;
-    padding-top: 5%;
+    margin-top: 5%;
     text-align: center;
     div{
         display: flex;
@@ -55,16 +67,30 @@
         align-items: center;
     }
 }
-.repo-card-list{
+.empty-repo-list{
     width: 100vw;
+    height: 20vh;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    div{
+        width: 90%;
+        margin: 0 auto;
+    }
+    h5{
+        font-size: 2rem;
+        line-height: 2rem;
+    }
+}
+.user-body{
+    box-shadow: none;
+}
+.repo-card-list{
+    width: 90vw;
     margin: 0 auto;
     .repo-card{
-        height: 200px;
-        margin: 1%;
-        display: flex;
-        justify-content: flex-start;
-        flex-direction: column;
-        flex-wrap: wrap;
+        width: 30%;
+        margin-bottom: 1%;
         border-radius: 8px;
         .title{
             display: flex;
@@ -72,6 +98,9 @@
             flex-wrap: wrap;
             justify-content: space-between;
             align-items: center;
+            mat-card-title{
+                font-size: 1.2rem;
+            }
             a{
                 text-decoration: none;
                 color: black;
@@ -91,4 +120,60 @@
             }
         }
     }
+}
+.paginator{
+    width: 80%;
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+
+    
+.user-card{
+    width: 90%;
+    margin: 0 auto;
+    margin-bottom: 2vh;
+    height: 30vh;
+    .user-basics{
+        width: 90%;
+        margin: 0 auto;
+        flex-direction: column;
+        .user-avatar{
+            width: 50%;
+            height: 40%;
+            img{
+                height: 100%;
+                width: auto;
+            }
+        }
+        .user-info{
+            text-align: center;
+            width: 90%;
+            height: 50%;
+            margin: 0 auto;
+            mat-card-title{
+                font-size: 1.2rem;
+                line-height: 1.2rem;
+                margin-top: 20px;
+                margin-bottom: 20px;
+            }
+            .bio, .location, .link{
+                text-align: center;
+            }
+            mat-card-subtitle{
+                font-size: .8rem;
+                div{
+                    margin: 0 auto;
+                }
+            }
+        }
+    }
+}
+
+.repo-card-list{
+    .repo-card{
+        width: 90%;
+    }
+}
+
 }

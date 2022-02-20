@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AppService } from '../../app/app.service';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import {PageEvent} from '@angular/material/paginator';
+import { Router } from '@angular/router';
+import { NgxMasonryOptions } from 'ngx-masonry';
 
 interface Repo{
   name: string,
@@ -20,6 +22,7 @@ interface Repo{
 })
 
 export class UserDetailsComponent implements OnInit {
+  
 
   loading: boolean=false;
   userName: string="";
@@ -32,10 +35,13 @@ export class UserDetailsComponent implements OnInit {
 
   userDetails: any={};
   userRepos : Repo[] = [];
-
+  masonryOptions: NgxMasonryOptions = {
+    gutter: 20,
+  };
+  
   private reposDataListener: Subscription;
 
-  constructor(private appService: AppService, private route: ActivatedRoute) {
+  constructor(private appService: AppService, private route: ActivatedRoute, private router: Router) {
     this.reposDataListener=this.appService.getReposDataListener().subscribe(dataStatus=>{
       if(this.appService.userInfo.reposLength){
         this.length=this.appService.userInfo.reposLength;
@@ -48,20 +54,27 @@ export class UserDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.loading=true;
-    this.userDetails=this.appService.userInfo;
-    this.appService.fetchUserRepos(this.pageSize, 1);
-    setTimeout(()=>{
-      this.loading=false;
-    },2000);
+    if(this.appService.userInfo){
+      this.userDetails=this.appService.userInfo;
+      this.appService.fetchUserRepos(this.pageSize, 1);
+      setTimeout(()=>{
+        this.loading=false;
+      },3000);
+    }else{
+      this.router.navigate(['']);
+    }
   }
   
   onPageChange(pageData: PageEvent){
     this.loading=true;
-    console.log(pageData);
     this.currentPage = pageData.pageIndex+1;
     this.pageSize=pageData.pageSize;
     this.appService.fetchUserRepos(this.pageSize, this.currentPage);
     this.loading=false;
+  }
+
+  clearSearch(){
+    this.searchRepoString="";
   }
 
 }
