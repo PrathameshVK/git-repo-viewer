@@ -2,21 +2,27 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { UserDetailsComponent } from '../components/user-details/user-details.component';
-import { LoaderComponent } from '../components/loader/loader.component';
+import { FormsModule } from '@angular/forms';
 
 import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import {MatIconModule} from '@angular/material/icon';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatCardModule} from '@angular/material/card';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { FlexLayoutModule } from '@angular/flex-layout';
+
+import { SearchReposPipe } from '../shared/pipes/search-repos.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserDetailsComponent,
-    LoaderComponent
+    routingComponents,
+    SearchReposPipe
   ],
   imports: [
     BrowserModule,
@@ -25,7 +31,13 @@ import {MatInputModule} from '@angular/material/input';
     BrowserAnimationsModule,
     MatButtonModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatIconModule,
+    MatProgressSpinnerModule,
+    MatCardModule,
+    FlexLayoutModule,
+    MatPaginatorModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

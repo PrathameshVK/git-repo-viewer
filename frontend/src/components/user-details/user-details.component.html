@@ -1,1 +1,53 @@
-<p>user-details works!</p>
+<div class="loader" *ngIf="loading">
+    <mat-spinner></mat-spinner>
+</div>
+<div *ngIf="!loading">
+        <mat-card class="user-card">
+            <div class="user-basics">
+                <div class="user-avatar">
+                    <img src="{{userDetails.avatar_url}}" alt="avatar">
+                </div>
+                <div class="user-info">
+                    <mat-card-title>{{userDetails.name}}</mat-card-title><br>
+                    <mat-card-subtitle class="bio">{{userDetails.bio}}</mat-card-subtitle>
+                    <mat-card-subtitle class="location"><mat-icon> location_on</mat-icon>{{userDetails.location}}</mat-card-subtitle>
+                    <mat-card-subtitle class="link"><mat-icon>link</mat-icon><a href="{{userDetails.html_url}}" target="_blank">{{userDetails.html_url}}</a></mat-card-subtitle>
+                </div>
+            </div>
+            <mat-card-content>
+            </mat-card-content>
+          </mat-card>
+    <div class="search-bar">
+        <form class="search-form">
+            <div>
+              <mat-form-field class="example-full-width">
+                <span matPrefix> </span>
+                <input type="tel" matInput placeholder="Search repos" name= "search" [(ngModel)]= "searchRepoString" autocomplete="off">
+                <button matSuffix mat-button><mat-icon >search</mat-icon></button>
+              </mat-form-field>
+            </div>
+        </form>
+    </div>
+    <div class="repo-card-list" fxLayout="row wrap" fxLayoutAlign="flex-start">
+        <mat-card *ngFor="let repo of userRepos | searchRepos:searchRepoString" class="repo-card mat-elevation-z4" fxFlex.lg="0 1 calc(33.3% - 32px)" fxFlex.md="0 2 calc(50% - 32px)" fxFlex.sm="0 1 calc(100% - 32px)" fxFlex.xs="0 1 calc(100% - 32px)">
+            <div class="title"><a href="{{repo.html_url}}" target="_blank"><mat-card-title>{{repo.name}}</mat-card-title></a><div *ngIf="repo.stargazers_count>0" style="display: flex; align-items: center; gap: 2px;"><mat-icon style="color: gold;">star</mat-icon>{{repo.stargazers_count}}</div></div>
+            <mat-card-subtitle>Updated at {{repo.updated_at | date: 'mediumDate'}}</mat-card-subtitle>
+            <mat-card-content>
+              <p>{{repo.description}}</p>
+            </mat-card-content>
+            <mat-card-actions style="margin: auto 0 0;">
+                <div class="topic-list" *ngFor="let topic of repo.topics">
+                    <div class="topic">{{topic}}</div>
+                </div>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+    <mat-paginator
+        *ngIf="userRepos.length>0"
+        [length]="length"
+        [pageSize]="pageSize"
+        [pageSizeOptions]="pageSizeOptions"
+        (page)="onPageChange($event)"
+        aria-label="Select page">
+    </mat-paginator>
+</div>

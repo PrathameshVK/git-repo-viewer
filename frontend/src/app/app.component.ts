@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Injectable } from '@angular/core';
 import { AppService } from './app.service';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -10,10 +12,16 @@ import { AppService } from './app.service';
 
 @Injectable()
 export class AppComponent {
-  title = 'frontend';
-  constructor(private appService: AppService) { }
 
-  clickBtn(){
-    this.appService.sayHi();
+  private apiDataSub: Subscription;
+
+  constructor(private appService: AppService, private router: Router) {
+    this.apiDataSub=this.appService.getSearchResultListener().subscribe(dataStatus=>{
+      if(dataStatus){
+        this.router.navigate(['/user',this.appService.userInfo.login]);
+      }else{
+        this.router.navigate(['/error']);
+      }
+    })
   }
 }

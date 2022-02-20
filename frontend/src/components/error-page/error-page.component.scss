@@ -1,0 +1,40 @@
+.error-div{
+    width: 90%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    gap: 10px;
+    .error-message{
+        width: 50%;
+        text-align: right;
+        h3{
+            font-size: 3.5rem;
+        }
+        h6{
+            font-size: 2rem;
+            line-height: 2rem;
+        }
+        .go-back{
+            margin: 2px;
+            padding: 8px;
+            border: none;
+            cursor: pointer;
+            border-radius: 6px;
+            background-color: rgb(94, 94, 255);
+            font-size: 1rem;
+            color: white;
+            &:hover{
+                background-color: rgb(52, 52, 250);
+            }
+        }
+    }
+    .error-image{
+        width: 50%;
+        img{
+            width: 70%;
+            height: auto;
+            margin: 0 auto;
+        }
+    }
+}
