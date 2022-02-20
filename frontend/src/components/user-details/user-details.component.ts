@@ -37,8 +37,12 @@ export class UserDetailsComponent implements OnInit {
 
   constructor(private appService: AppService, private route: ActivatedRoute) {
     this.reposDataListener=this.appService.getReposDataListener().subscribe(dataStatus=>{
-      this.length=this.appService.userInfo.reposLength;
-      this.userRepos=this.appService.userRepos;
+      if(this.appService.userInfo.reposLength){
+        this.length=this.appService.userInfo.reposLength;
+      }
+      if(this.appService.userRepos){
+        this.userRepos=this.appService.userRepos;
+      }
     })
   }
 

@@ -8,10 +8,10 @@
                     <img src="{{userDetails.avatar_url}}" alt="avatar">
                 </div>
                 <div class="user-info">
-                    <mat-card-title>{{userDetails.name}}</mat-card-title><br>
-                    <mat-card-subtitle class="bio">{{userDetails.bio}}</mat-card-subtitle>
-                    <mat-card-subtitle class="location"><mat-icon> location_on</mat-icon>{{userDetails.location}}</mat-card-subtitle>
-                    <mat-card-subtitle class="link"><mat-icon>link</mat-icon><a href="{{userDetails.html_url}}" target="_blank">{{userDetails.html_url}}</a></mat-card-subtitle>
+                    <mat-card-title *ngIf="userDetails.name || userDetails.login">{{userDetails.name?userDetails.name:userDetails.login}}</mat-card-title><br>
+                    <mat-card-subtitle *ngIf="userDetails.bio" class="bio">{{userDetails.bio}}</mat-card-subtitle>
+                    <mat-card-subtitle *ngIf="userDetails.location" class="location"><mat-icon> location_on</mat-icon>{{userDetails.location}}</mat-card-subtitle>
+                    <mat-card-subtitle *ngIf="userDetails.html_url" class="link"><mat-icon>link</mat-icon><a href="{{userDetails.html_url}}" target="_blank">{{userDetails.html_url}}</a></mat-card-subtitle>
                 </div>
             </div>
             <mat-card-content>

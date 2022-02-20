@@ -11,13 +11,7 @@ export class SearchComponent implements OnInit {
   searchString: String = "";
   loading:boolean=false;
 
-  constructor(private appService: AppService) {
-    this.appService.getSearchResultListener().subscribe(dataStatus=>{
-      if(dataStatus){
-        this.loading=false;
-      }
-    })
-   }
+  constructor(private appService: AppService) {}
 
   ngOnInit(): void {
   }

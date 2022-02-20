@@ -16,6 +16,7 @@ router.get('/',async (req,res,next)=>{
     .then((response)=>{
         foundUser=true;
         userInfo=response.data;
+        console.log(userInfo);
         if(foundUser){
             console.log('next');
             axios({
@@ -30,13 +31,13 @@ router.get('/',async (req,res,next)=>{
             })
             .catch((error)=>{
                 console.log(error);
-                res.status(error.response.status).json({ "messageTitle": "User Not Found", "message":error.response.data });
+                res.status(404).json({"success" : false, "message": "User Not Found"});
             });
         }
     })
     .catch((error)=>{
         console.log(error);
-        // res.status(error.response.status).json({"success" : false, "message": error.response.data.message});
+        res.status(404).json({"success" : false, "message": "User Not Found"});
     });
     
 })
