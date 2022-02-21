@@ -8,7 +8,7 @@
     <div>
       <mat-form-field>
         <span matPrefix> </span>
-        <input type="tel" matInput placeholder="Search" name= "search" [(ngModel)]= "searchString" autocomplete="off">
+        <input matInput placeholder="Search" name= "search" [(ngModel)]= "searchString" autocomplete="off">
         <button type="button" matSuffix mat-button (click)="fetchUserInfo(searchString)"><mat-icon >search</mat-icon></button>
       </mat-form-field>
     </div>
