@@ -24,7 +24,6 @@ router.get('/',async (req,res,next)=>{
             .then((response)=>{
                 userRepos=response.data;
                 userInfo['reposLength']=userRepos.length;
-                console.log(userRepos.length);
                 res.status(200).json({"success" : true, "data": userInfo});
             })
             .catch((error)=>{

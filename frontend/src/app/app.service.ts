@@ -24,7 +24,7 @@ export class AppService {
   constructor(private http: HttpClient) { }
 
   fetchUserInfo(searchString: string){
-      this.http.get<any>(`http://localhost:3000/api/search?user=${searchString}`).subscribe({
+      this.http.get<any>(`http://localhost:8000/api/search?user=${searchString}`).subscribe({
         next: data => {
           this.userInfo = data.data;
           this.searchResultListener.next(true);
@@ -38,7 +38,7 @@ export class AppService {
   fetchUserRepos(pageSize: number, currentPage: number){
     const startIndex=(currentPage - 1)*pageSize;
     const endIndex=currentPage*pageSize;
-      this.http.get<any>(`http://localhost:3000/api/search/repos?pageSize=${pageSize}&currentPage=${currentPage}`).subscribe({
+      this.http.get<any>(`http://localhost:8000/api/search/repos?pageSize=${pageSize}&currentPage=${currentPage}`).subscribe({
         next: data=>{
           this.userRepos=data.data;
           this.repoDataListener.next(true);

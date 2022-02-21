@@ -38,7 +38,7 @@
                     </div>
                 </form>
             </div>
-            <div class="repo-card-list" fxLayout="row wrap" fxLayoutAlign="flex-start">
+            <div class="repo-card-list">
                 <div *ngIf="!userRepos.length" class="empty-repo-list">
                     <div>
                         <h5>
@@ -47,6 +47,7 @@
                     </div>
                 </div>
                 <ngx-masonry style="width: 90vw;" [options]="masonryOptions" [ordered]="true">
+                    <div class="gutter-sizer"></div>
                     <mat-card ngxMasonryItem *ngFor="let repo of userRepos | searchRepos:searchRepoString" class="repo-card mat-elevation-z4">
                         <div class="title"><a href="{{repo.html_url}}" target="_blank"><mat-card-title>{{repo.name}}</mat-card-title></a><div *ngIf="repo.stargazers_count>0" style="display: flex; align-items: center; gap: 2px;"><mat-icon style="color: gold;">star</mat-icon>{{repo.stargazers_count}}</div></div>
                         <div><mat-card-subtitle>Updated at {{repo.updated_at | date: 'mediumDate'}}</mat-card-subtitle></div>
